@@ -66,6 +66,7 @@ router.post('/', checkNotLogin, function (req, res, next) {
       user =result.ops[0];
       // 将用户信息存入 session
       delete user.password;
+      //这里设置req,意在当redirect后的req里有user字段，则能通过验证
       req.session.user = user;
       // 写入 flash
       req.flash('success', '注册成功');
